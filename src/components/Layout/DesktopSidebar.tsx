@@ -15,15 +15,6 @@ interface DesktopSidebarProps {
   className?: string;
 }
 
-// const navigationItems = [
-//   { name: 'Dashboard', icon: LayoutDashboard, href: '/' },
-//   { name: 'Sales', icon: ShoppingCart, href: '/sales' },
-//   { name: 'Inventory', icon: Package, href: '/inventory' },
-//   { name: 'Finance', icon: Wallet, href: '/finance' },
-//   { name: 'Customers', icon: Users, href: '/customers' },
-//   { name: 'Settings', icon: Settings, href: '/settings' }
-// ];
-
 export default function DesktopSidebar({ className = '' }: DesktopSidebarProps) {
   const { t, i18n } = useTranslation();
   const { currentLocale } = useLocale();

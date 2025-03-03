@@ -69,7 +69,7 @@ export default function Dashboard() {
                 to="/inventory/replenishment"
                 className="inline-flex items-center px-2 py-1 text-xs font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700"
               >
-                {t('common.actions.viewItems')}
+                {t('common.actions.viewDetails')}
               </Link>
             </div>
           }
@@ -86,7 +86,7 @@ export default function Dashboard() {
                 to="/alerts"
                 className="inline-flex items-center px-2 py-1 text-xs font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700"
               >
-                {t('common.actions.viewAlerts')}
+                {t('common.actions.viewDetails')}
               </Link>
             </div>
           }
