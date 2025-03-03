@@ -4,18 +4,22 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import ptBR from './locales/pt-BR';
 import en from './locales/en';
 
+const resources = {
+  'pt-BR': ptBR,
+  'en': en
+};
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    resources: {
-      'pt-BR': ptBR,
-      'en': en
-    },
+    resources,
     fallbackLng: 'pt-BR',
-    defaultNS: 'common',
+    ns: ['translation'],
+    defaultNS: 'translation',
+    debug: process.env.NODE_ENV === 'development',
     interpolation: {
-      escapeValue: false
+      escapeValue: false // React já escapa por padrão
     }
   });
 

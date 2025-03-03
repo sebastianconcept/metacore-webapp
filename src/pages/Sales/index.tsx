@@ -18,6 +18,8 @@ import {
   DollarSign
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useLocale } from '../../contexts/LocaleContext';
 
 interface SalesSummary {
   totalAmount: number;
@@ -62,6 +64,16 @@ const statusOptions = [
 ];
 
 export default function Sales() {
+  const { t, i18n } = useTranslation();
+  const { currentLocale } = useLocale();
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat(currentLocale, {
+      style: 'currency',
+      currency: currentLocale === 'pt-BR' ? 'BRL' : 'USD'
+    }).format(amount);
+  };
+
   // This would come from your backend in a real application
   const summary: SalesSummary = {
     totalAmount: 15750.45,
@@ -157,7 +169,7 @@ export default function Sales() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-gray-900">Vendas</h1>
+        <h1 className="text-2xl font-semibold text-gray-900">{t('navigation.sales')}</h1>
         <div className="flex space-x-3">
           <button className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
             <Download className="h-5 w-5 mr-2" />
@@ -356,9 +368,8 @@ export default function Sales() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span
-                      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                        statusColors[sale.status]
-                      }`}
+                      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${statusColors[sale.status]
+                        }`}
                     >
                       {statusLabels[sale.status]}
                     </span>
@@ -368,9 +379,8 @@ export default function Sales() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div
-                      className={`text-sm font-medium ${
-                        invoiceStatusColors[sale.invoice.status]
-                      }`}
+                      className={`text-sm font-medium ${invoiceStatusColors[sale.invoice.status]
+                        }`}
                     >
                       {sale.invoice.number || 'Pendente'}
                     </div>

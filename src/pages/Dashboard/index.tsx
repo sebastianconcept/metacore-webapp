@@ -18,7 +18,7 @@ export default function Dashboard() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-gray-900">{t('dashboard.title')}</h1>
+      <h1 className="text-2xl font-semibold text-gray-900">{t('navigation.dashboard')}</h1>
       </div>
 
       {/* Stats Grid */}
