@@ -38,7 +38,7 @@ export default function Inventory() {
   const { t } = useTranslation();
   // This would come from your backend in a real application
   const stats: InventoryStats = {
-    totalValue: 157834.50,
+    totalValue: 157834.60,
     lowStockItems: 23,
     lastMovements: 12,
     stockHealth: 'warning'
