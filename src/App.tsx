@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { LocaleProvider } from './contexts/LocaleContext';
 import MainLayout from './components/Layout';
