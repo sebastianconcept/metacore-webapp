@@ -77,6 +77,8 @@ export default {
         totalSales: 'Total Sales',
         averageTicket: 'Average Ticket',
         activeCustomers: 'Active Customers',
+        salesTrend: 'Sales Trend',
+        customerActivity: 'Customer Activity',
         lowStock: 'Low Stock Items'
       },
       activity: {
@@ -89,7 +91,18 @@ export default {
       },
       recentActivity: 'Recent Activity',
       months: {
-        march: 'March'
+        january: 'January',
+        february: 'February',
+        march: 'March',
+        april: 'April',
+        may: 'May',
+        june: 'June',
+        july: 'July',
+        august: 'August',
+        september: 'September',
+        october: 'October',
+        november: 'November',
+        december: 'December'
       }
     },
     sales: {

@@ -77,6 +77,8 @@ export default {
         totalSales: 'Total de Vendas',
         averageTicket: 'Ticket Médio',
         activeCustomers: 'Clientes Ativos',
+        salesTrend: 'Tendência de Vendas',
+        customerActivity: 'Atividade de Clientes',
         lowStock: 'Produtos em Baixa'
       },
       activity: {
@@ -89,7 +91,18 @@ export default {
       },
       recentActivity: 'Atividade Recente',
       months: {
-        march: 'Março'
+        january: 'Janeiro',
+        february: 'Fevereiro',
+        march: 'Março',
+        april: 'Abril',
+        may: 'Maio',
+        june: 'Junho',
+        july: 'Julho',
+        august: 'Agosto',
+        september: 'Setembro',
+        october: 'Outubro',
+        november: 'Novembro',
+        december: 'Dezembro'
       }
     },
     sales: {

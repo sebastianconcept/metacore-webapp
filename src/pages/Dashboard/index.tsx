@@ -2,11 +2,39 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLocale } from '../../contexts/LocaleContext';
-import { TrendingUp, Users, Package, AlertTriangle, Clock } from 'lucide-react';
+import { TrendingUp, Package, AlertTriangle, Clock } from 'lucide-react';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 
 export default function Dashboard() {
   const { t, i18n } = useTranslation();
   const { currentLocale } = useLocale();
+
+  // Sample data for charts - In a real app, this would come from your API
+  const salesData = [
+    { name: '00:00', gross: 1200, average: 300, net: 960 },
+    { name: '03:00', gross: 900, average: 225, net: 720 },
+    { name: '06:00', gross: 600, average: 200, net: 480 },
+    { name: '09:00', gross: 1600, average: 320, net: 1280 },
+    { name: '12:00', gross: 2400, average: 400, net: 1920 },
+    { name: '15:00', gross: 2100, average: 350, net: 1680 },
+    { name: '18:00', gross: 2800, average: 400, net: 2240 },
+    { name: '21:00', gross: 2000, average: 333, net: 1600 }
+  ];
+
+  const customerData = [
+    { name: 'Mon', new: 12, recurring: 25 },
+    { name: 'Tue', new: 15, recurring: 30 },
+    { name: 'Wed', new: 18, recurring: 28 },
+    { name: 'Thu', new: 14, recurring: 32 },
+    { name: 'Fri', new: 20, recurring: 35 },
+    { name: 'Sat', new: 25, recurring: 40 },
+    { name: 'Sun', new: 16, recurring: 30 }
+  ];
+
+  const getCurrentMonthKey = () => {
+    const month = new Date().toLocaleString(currentLocale, { month: 'long' }).toLowerCase();
+    return `${month}`;
+  };
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat(currentLocale, {
@@ -25,39 +53,13 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard
           title={t('dashboard.stats.todaySales')}
-          value={
-            <div className="space-y-1">
-              <p>{formatCurrency(3240.50)}</p>
-              <p className="text-base">
-                {t('dashboard.stats.goal', {
-                  amount: formatCurrency(5000.00),
-                  percentage: '64.8'
-                })}
-              </p>
-            </div>
-          }
-          description={t('dashboard.stats.vsYesterday', { percentage: '+12' })}
+          grossRevenue={15750.45}
+          netRevenue={12020.27}
+          salesCount={47}
+          goalProgress={65}
           icon={TrendingUp}
           trend="up"
-        />
-        <StatCard
-          title={t('dashboard.stats.newCustomers', { 
-            month: t('common.months.march')
-          })}
-          value={
-            <div className="space-y-1">
-              <p>{t('dashboard.stats.newCount', { count: 48 })}</p>
-              <p className="text-base">
-                {t('dashboard.stats.recurringCount', { count: 156 })}
-              </p>
-            </div>
-          }
-          description={t('dashboard.stats.last24h', { 
-            new: 8, 
-            recurring: 12 
-          })}
-          icon={Users}
-          trend="up"
+          formatCurrency={formatCurrency}
         />
         <StatCard
           title={t('dashboard.stats.stockItems')}
@@ -76,23 +78,139 @@ export default function Dashboard() {
           icon={Package}
           trend="neutral"
         />
-        <StatCard
-          title={t('dashboard.stats.alerts')}
-          value="3"
-          description={
-            <div className="flex items-center space-x-2">
-              <span>{t('dashboard.stats.criticalAlerts', { count: 2 })}</span>
-              <Link
-                to="/alerts"
-                className="inline-flex items-center px-2 py-1 text-xs font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700"
-              >
-                {t('common.actions.viewDetails')}
-              </Link>
+      </div>
+
+      {/* Alerts Section */}
+      <div className="rounded-md bg-yellow-50 p-4">
+        <div className="flex">
+          <div className="flex-shrink-0">
+            <AlertTriangle className="h-5 w-5 text-yellow-400" />
+          </div>
+          <div className="ml-3">
+            <h3 className="text-sm font-medium text-yellow-800">
+              Atenção necessária
+            </h3>
+            <div className="mt-2 text-sm text-yellow-700">
+              <p>
+                3 alertas precisam de sua atenção.{' '}
+                <Link
+                  to="/alerts"
+                  className="font-medium underline hover:text-yellow-600"
+                >
+                  Ver detalhes
+                </Link>
+              </p>
             </div>
-          }
-          icon={AlertTriangle}
-          trend="down"
-        />
+          </div>
+        </div>
+      </div>
+
+      {/* Charts Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Sales Trend Chart */}
+        <div className="bg-white rounded-lg shadow p-6">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-lg font-medium text-gray-900">{t('dashboard.stats.salesTrend')}</h3>
+          </div>
+          <div className="h-80">
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart data={salesData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="colorGross" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#6366F1" stopOpacity={0.1}/>
+                    <stop offset="95%" stopColor="#6366F1" stopOpacity={0}/>
+                  </linearGradient>
+                  <linearGradient id="colorAverage" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#10B981" stopOpacity={0.1}/>
+                    <stop offset="95%" stopColor="#10B981" stopOpacity={0}/>
+                  </linearGradient>
+                  <linearGradient id="colorNet" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#F59E0B" stopOpacity={0.1}/>
+                    <stop offset="95%" stopColor="#F59E0B" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis dataKey="name" />
+                <YAxis 
+                  tickFormatter={(value: number | bigint) => 
+                    new Intl.NumberFormat(currentLocale, {
+                      notation: 'compact',
+                      compactDisplay: 'short',
+                      style: 'currency',
+                      currency: currentLocale === 'pt-BR' ? 'BRL' : 'USD'
+                    }).format(value)
+                  }
+                />
+                <Tooltip 
+                  formatter={(value: number) => [
+                    new Intl.NumberFormat(currentLocale, {
+                      style: 'currency',
+                      currency: currentLocale === 'pt-BR' ? 'BRL' : 'USD'
+                    }).format(value),
+                    'Value'
+                  ]}
+                />
+                <Area
+                  type="monotone"
+                  dataKey="gross"
+                  name="Gross Sales"
+                  stroke="#6366F1"
+                  fillOpacity={1}
+                  fill="url(#colorGross)"
+                />
+                <Area
+                  type="monotone"
+                  dataKey="average"
+                  name="Average Ticket"
+                  stroke="#10B981"
+                  fillOpacity={1}
+                  fill="url(#colorAverage)"
+                />
+                <Area
+                  type="monotone"
+                  dataKey="net"
+                  name="Net Result"
+                  stroke="#F59E0B"
+                  fillOpacity={1}
+                  fill="url(#colorNet)"
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* Customer Activity Chart */}
+        <div className="bg-white rounded-lg shadow p-6">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-lg font-medium text-gray-900">{t('dashboard.stats.customerActivity')}</h3>
+            <div className="flex flex-col items-end text-sm space-y-1">
+              <div>
+                <span className="text-gray-500">New Customers Mean:</span>{' '}
+                <span className="font-medium text-gray-900">
+                  {(customerData.reduce((acc, curr) => acc + curr.new, 0) / customerData.length).toFixed(1)}
+                </span>
+              </div>
+              <div>
+                <span className="text-gray-500">Recurring Customers Mean:</span>{' '}
+                <span className="font-medium text-gray-900">
+                  {(customerData.reduce((acc, curr) => acc + curr.recurring, 0) / customerData.length).toFixed(1)}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="h-80">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={customerData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="new" name="New Customers" fill="#6366F1" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="recurring" name="Recurring Customers" fill="#A5B4FC" radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
       </div>
 
       {/* Activity Timeline */}
@@ -110,13 +228,29 @@ export default function Dashboard() {
 
 interface StatCardProps {
   title: string;
-  value: React.ReactNode;
-  description: React.ReactNode;
+  grossRevenue?: number;
+  netRevenue?: number;
+  salesCount?: number;
+  goalProgress?: number;
   icon: React.ElementType;
   trend: 'up' | 'down' | 'neutral';
+  formatCurrency?: (amount: number) => string;
+  value?: string;
+  description?: React.ReactNode;
 }
 
-function StatCard({ title, value, description, icon: Icon, trend }: StatCardProps) {
+function StatCard({ 
+  title, 
+  grossRevenue, 
+  netRevenue, 
+  salesCount,
+  goalProgress,
+  icon: Icon, 
+  trend,
+  formatCurrency,
+  value,
+  description
+}: StatCardProps) {
   const trendColors = {
     up: 'text-green-600 bg-green-50',
     down: 'text-red-600 bg-red-50',
@@ -124,16 +258,47 @@ function StatCard({ title, value, description, icon: Icon, trend }: StatCardProp
   };
 
   return (
-    <div className="bg-white rounded-lg shadow p-6">
-      <div className="flex items-center">
-        <div className="flex-shrink-0">
-          <Icon className="h-6 w-6 text-gray-400" />
-        </div>
-        <div className="ml-4 flex-1">
-          <h3 className="text-sm font-medium text-gray-900">{title}</h3>
-          <div className="mt-1 text-2xl font-semibold text-gray-900">{value}</div>
-          <div className={`mt-1 text-sm ${trendColors[trend]}`}>{description}</div>
-        </div>
+    <div className="bg-white rounded-lg shadow p-4">
+      <div className="space-y-3">
+        <h3 className="text-sm font-medium text-gray-600">{title}</h3>
+        
+        {grossRevenue !== undefined && formatCurrency && (
+          <div>
+            <div className="text-2xl font-semibold text-gray-900">
+              {formatCurrency(grossRevenue)}
+            </div>
+            {salesCount && (
+              <div className="text-sm text-gray-500">{salesCount} vendas</div>
+            )}
+          </div>
+        )}
+
+        {value && (
+          <div>
+            <div className="text-2xl font-semibold text-gray-900">{value}</div>
+            {description && (
+              <div className="text-sm text-gray-500">{description}</div>
+            )}
+          </div>
+        )}
+
+        {goalProgress !== undefined && (
+          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div 
+              className="h-full bg-indigo-600 rounded-full" 
+              style={{ width: `${goalProgress}%` }}
+            />
+          </div>
+        )}
+
+        {netRevenue !== undefined && formatCurrency && (
+          <div className="text-sm">
+            <div className="text-gray-600">Líquido</div>
+            <div className="font-medium text-gray-900">
+              {formatCurrency(netRevenue)}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
