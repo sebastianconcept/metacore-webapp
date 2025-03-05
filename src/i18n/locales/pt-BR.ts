@@ -48,6 +48,18 @@ export default {
         daysAgo_plural: 'Há {{count}} dias'
       }
     },
+    statsCards: {
+      sales: {
+        title: 'Vendas',
+        sales: '{{count}} vendas',
+        netTotal: 'Líquido',
+        grossTotal: 'Total bruto'
+      },
+      spending: {
+        title: 'Despesas',
+        accountsPayable: '{{count}} contas a pagar'
+      }
+    },
     navigation: {
       dashboard: 'Dashboard',
       quicksale: 'Venda Rápida',
