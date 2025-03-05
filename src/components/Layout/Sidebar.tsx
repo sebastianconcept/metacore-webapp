@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import {
   LayoutDashboard,
   ShoppingCart,
+  ShoppingBag,
   Package,
   Wallet,
   Users,
@@ -29,6 +30,7 @@ export default function Sidebar({ className = '' }: SidebarProps) {
   const navigationItems = [
     { name: t('navigation.dashboard'), icon: LayoutDashboard, href: '/' },
     { name: t('navigation.sales'), icon: ShoppingCart, href: '/sales' },
+    { name: t('navigation.purchases'), icon: ShoppingBag, href: '/purchases' },
     { name: t('navigation.inventory'), icon: Package, href: '/inventory' },
     { name: t('navigation.finance'), icon: Wallet, href: '/finance' },
     { name: t('navigation.customers'), icon: Users, href: '/customers' },
@@ -61,7 +63,7 @@ export default function Sidebar({ className = '' }: SidebarProps) {
               {t(`${item.name}`)}
             </NavLink>
           ))}
-          <div className="pt-6 ml-3 text-xs text-gray-400">v0.1.2</div>
+          <div className="pt-6 ml-3 text-xs text-gray-400">v0.1.3</div>
         </nav>
       </div>
     </div>

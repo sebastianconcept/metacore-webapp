@@ -36,7 +36,7 @@ export default function SalesStatsCard({
   };
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow">
+    <div className="p-4 bg-white rounded-xl shadow">
       <div className="space-y-3">
         <h3 className="text-sm font-medium text-gray-600">{title}</h3>
 
