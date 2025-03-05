@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   LayoutDashboard,
   ShoppingCart,
@@ -8,7 +9,6 @@ import {
   Settings,
   Store
 } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 import { useLocale } from '../../contexts/LocaleContext';
 
 interface SidebarProps {
@@ -26,15 +26,14 @@ export default function Sidebar({ className = '' }: SidebarProps) {
     }).format(amount);
   };
 
-  const navigation = [
+  const navigationItems = [
     { name: t('navigation.dashboard'), icon: LayoutDashboard, href: '/' },
     { name: t('navigation.sales'), icon: ShoppingCart, href: '/sales' },
-    { name: 'Inventoryyy', icon: Package, href: '/inventory' },
-    { name: 'Finance', icon: Wallet, href: '/finance' },
-    { name: 'Customers', icon: Users, href: '/customers' },
-    { name: 'Settings', icon: Settings, href: '/settings' }
+    { name: t('navigation.inventory'), icon: Package, href: '/inventory' },
+    { name: t('navigation.finance'), icon: Wallet, href: '/finance' },
+    { name: t('navigation.customers'), icon: Users, href: '/customers' },
+    { name: t('navigation.settings'), icon: Settings, href: '/settings' }
   ];
-
 
   return (
     <div className={`fixed inset-y-0 left-0 w-64 bg-white border-r border-gray-200 ${className}`}>
@@ -42,12 +41,12 @@ export default function Sidebar({ className = '' }: SidebarProps) {
         {/* Logo */}
         <div className="flex items-center h-16 px-6 border-b border-gray-200">
           <Store className="w-8 h-8 text-indigo-600" />
-          <span className="ml-3 text-xl font-semibold">Minha Loja</span>
+          <span className="ml-3 text-xl font-semibold">{t('common.storeName', 'Minha Loja')}</span>
         </div>
 
         {/* Navigation */}
         <nav className="flex-1 px-4 py-4 space-y-1 overflow-y-auto">
-          {navigation.map((item) => (
+          {navigationItems.map((item) => (
             <NavLink
               key={item.name}
               to={item.href}
@@ -58,10 +57,11 @@ export default function Sidebar({ className = '' }: SidebarProps) {
                 }`
               }
             >
-              <item.icon className="w-5 h-5 mr-3" />
-              {item.name}
+              <item.icon className="w-5 h-5 mr-3" aria-hidden="true" />
+              {t(`${item.name}`)}
             </NavLink>
           ))}
+          <div className="pt-6 ml-3 text-xs text-gray-400">v0.1.2</div>
         </nav>
       </div>
     </div>
