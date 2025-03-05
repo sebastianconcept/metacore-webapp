@@ -1,4 +1,3 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Dashboard from '../pages/Dashboard';
 import Sales from '../pages/Sales';
@@ -14,6 +13,7 @@ import NewTransaction from '../pages/Finance/NewTransaction';
 import Alerts from '../pages/Alerts';
 import Notifications from '../pages/Notifications';
 import Search from '../pages/Search';
+import Purchases from '../pages/Purchases';
 import Menu from '../pages/Menu';
 
 export default function AppRoutes() {
@@ -26,6 +26,7 @@ export default function AppRoutes() {
       <Route path="/inventory/scanner" element={<Scanner />} />
       <Route path="/inventory/replenishment" element={<Replenish />} />
       <Route path="/finance" element={<Finance />} />
+      <Route path="/purchases" element={<Purchases />} />
       <Route path="/finance/new" element={<NewTransaction />} />
       <Route path="/customers" element={<Customers />} />
       <Route path="/alerts" element={<Alerts />} />

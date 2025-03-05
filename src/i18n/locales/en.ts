@@ -66,6 +66,7 @@ export default {
       scanner: 'Scanner',
       menu: 'Menu',
       sales: 'Sales',
+      purchases: 'Purchases',
       inventory: 'Inventory',
       finance: 'Finance',
       customers: 'Customers',
