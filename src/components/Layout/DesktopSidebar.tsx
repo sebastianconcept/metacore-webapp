@@ -61,6 +61,7 @@ export default function DesktopSidebar({ className = '' }: DesktopSidebarProps) 
               {t(`${item.name}`)}
             </NavLink>
           ))}
+          <div className="pt-6 ml-3 text-xs text-gray-400">v0.1.2</div>
         </nav>
       </div>
     </div>
