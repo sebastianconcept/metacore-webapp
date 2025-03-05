@@ -1,3 +1,79 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  .dark {
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
+  }
+
+  body {
+    @apply bg-white text-gray-900 transition-colors duration-200;
+  }
+
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+
+  /* Background colors */
+  .dark .bg-white {
+    background-color: rgb(31 41 55);
+    /* bg-gray-800 */
+  }
+
+  .dark .bg-gray-50 {
+    background-color: rgb(17 24 39);
+    /* bg-gray-900 */
+  }
+
+  /* Text colors */
+  .dark .text-gray-900 {
+    color: rgb(243 244 246);
+    /* text-gray-100 */
+  }
+
+  .dark .text-gray-800 {
+    color: rgb(229 231 235);
+    /* text-gray-200 */
+  }
+
+  .dark .text-gray-700 {
+    color: rgb(209 213 219);
+    /* text-gray-300 */
+  }
+
+  .dark .text-gray-600 {
+    color: rgb(156 163 175);
+    /* text-gray-400 */
+  }
+
+  .dark .text-gray-500 {
+    color: rgb(107 114 128);
+    /* text-gray-500 */
+  }
+
+  /* Border colors */
+  .dark .border-gray-200 {
+    border-color: rgb(55 65 81);
+    /* border-gray-700 */
+  }
+
+  /* Hover states */
+  .dark .hover\:bg-gray-50:hover {
+    background-color: rgb(55 65 81);
+    /* hover:bg-gray-700 */
+  }
+
+  /* Shadow modifications */
+  .dark .shadow {
+    --tw-shadow-color: rgba(0, 0, 0, 0.3);
+    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+}

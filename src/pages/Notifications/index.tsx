@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
-  Bell,
   AlertTriangle,
   Package,
   DollarSign,
@@ -225,9 +224,8 @@ export default function Notifications() {
                 <div className="flex items-start justify-between">
                   <div>
                     <p
-                      className={`text-sm font-medium ${
-                        !notification.read ? 'text-gray-900' : 'text-gray-600'
-                      }`}
+                      className={`text-sm font-medium ${!notification.read ? 'text-gray-900' : 'text-gray-600'
+                        }`}
                     >
                       {notification.title}
                     </p>
