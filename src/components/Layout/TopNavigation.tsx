@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Bell, Search, AlertTriangle, Package, DollarSign, X, ChevronDown } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import { ThemeToggle } from '../ui/ThemeToggle';
 
 interface Notification {
   id: string;
@@ -119,7 +120,8 @@ export default function TopNavigation() {
           </div>
 
           {/* Right section */}
-          <div className="flex items-center space-x-4" ref={dropdownRef}>
+          <div className="flex items-center space-x-6" ref={dropdownRef}>
+            <ThemeToggle />
             <button
               type="button"
               className={`relative p-2 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${
