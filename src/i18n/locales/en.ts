@@ -23,6 +23,18 @@ export default {
         markAsRead: 'Mark as Read',
         markAllAsRead: 'Mark All as Read'
       },
+      statsCards: {
+        sales: {
+          title: 'Sales',
+          sales: '{{count}} sales',
+          netTotal: 'Net',
+          grossTotal: 'Gross total sales'
+        },
+        spending: {
+          title: 'Spending',
+          accountsPayable: '{{count}} accounts payable'
+        }
+      },
       status: {
         active: 'Active',
         inactive: 'Inactive',

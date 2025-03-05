@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard,
@@ -29,8 +28,7 @@ export default function MobileNav({ className = '' }: MobileNavProps) {
             key={item.name}
             to={item.href}
             className={({ isActive }) =>
-              `flex flex-col items-center justify-center flex-1 min-w-0 text-xs font-medium ${
-                isActive ? 'text-indigo-600' : 'text-gray-500 hover:text-gray-700'
+              `flex flex-col items-center justify-center flex-1 min-w-0 text-xs font-medium ${isActive ? 'text-indigo-600' : 'text-gray-500 hover:text-gray-700'
               }`
             }
           >
