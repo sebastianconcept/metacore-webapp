@@ -27,6 +27,7 @@ export default {
         sales: {
           title: 'Sales',
           sales: '{{count}} sales',
+          goal: 'Goal',
           netTotal: 'Net',
           grossTotal: 'Gross total sales'
         },

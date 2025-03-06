@@ -50,13 +50,15 @@ export default function SalesStatsCard({
             )}
           </div>
         )}
-        {goalProgress !== undefined && (
-          <div className="h-2 overflow-hidden bg-gray-200 rounded-full">
+        {goalProgress !== undefined && (<div className="flex">
+          <div className="flex-2 mr-2 text-sm text-gray-500">{t('statsCards.sales.goal')}</div>
+          <div className="grow mt-2 h-2 overflow-hidden bg-gray-200 rounded-full">
             <div
               className="h-full bg-indigo-600 rounded-full"
               style={{ width: `${goalProgress}%` }}
             />
           </div>
+        </div>
         )}
 
         {netRevenue !== undefined && formatCurrency && (

@@ -52,6 +52,7 @@ export default {
       sales: {
         title: 'Vendas',
         sales: '{{count}} vendas',
+        goal: 'Meta',
         netTotal: 'Líquido',
         grossTotal: 'Total bruto'
       },
