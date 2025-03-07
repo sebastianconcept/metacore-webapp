@@ -50,6 +50,9 @@ export default {
     },
     statsCards: {
       sales: {
+          today: 'Hoje',
+          week: 'Semana',
+          month: 'Mês',
         title: 'Vendas',
         sales: '{{count}} vendas',
         goal: 'Meta',
@@ -57,6 +60,9 @@ export default {
         grossTotal: 'Total bruto'
       },
       spending: {
+          today: 'Hoje',
+          week: 'Semana',
+          month: 'Mês',
         title: 'Despesas',
         accountsPayable: '{{count}} contas a pagar'
       }
