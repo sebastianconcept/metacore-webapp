@@ -25,6 +25,9 @@ export default {
       },
       statsCards: {
         sales: {
+          today: 'Today',
+          week: 'Week',
+          month: 'Month',
           title: 'Sales',
           sales: '{{count}} sales',
           goal: 'Goal',
@@ -32,6 +35,9 @@ export default {
           grossTotal: 'Gross total sales'
         },
         spending: {
+          today: 'Today',
+          week: 'Week',
+          month: 'Month',
           title: 'Spending',
           accountsPayable: '{{count}} accounts payable'
         }

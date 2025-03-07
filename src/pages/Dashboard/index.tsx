@@ -31,7 +31,6 @@ export default function Dashboard() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <SalesStatsCard
-          title={t('dashboard.stats.todaySales')}
           grossRevenue={15750.45}
           netRevenue={12020.40}
           salesCount={47}
@@ -40,7 +39,6 @@ export default function Dashboard() {
           trend='up'
         />
         <SpendingStatsCard
-          title={t('statsCards.spending.title')}
           icon={ChevronUp}
           spendingTotal={2870.60}
           accountsPayableCount={3}
