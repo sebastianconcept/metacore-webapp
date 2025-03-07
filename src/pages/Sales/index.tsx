@@ -183,6 +183,26 @@ export default function Sales() {
 
   return (
     <div className="space-y-6">
+      {/* Quick Actions */}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <button className="flex items-center justify-center px-4 py-3 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+          <FileText className="h-5 w-5 mr-2" />
+          Relatório Detalhado
+        </button>
+        <button className="flex items-center justify-center px-4 py-3 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+          <Mail className="h-5 w-5 mr-2" />
+          Enviar Relatório
+        </button>
+        <button className="flex items-center justify-center px-4 py-3 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+          <Printer className="h-5 w-5 mr-2" />
+          Imprimir Relatório
+        </button>
+        <button className="flex items-center justify-center px-4 py-3 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+          <Download className="h-5 w-5 mr-2" />
+          Exportar Dados
+        </button>
+      </div>
+            
       {/* Header */}
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold text-gray-900">{t('navigation.sales')}</h1>
@@ -571,25 +591,6 @@ export default function Sales() {
         </div>
       </div>
 
-      {/* Quick Actions */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <button className="flex items-center justify-center px-4 py-3 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-          <FileText className="h-5 w-5 mr-2" />
-          Relatório Detalhado
-        </button>
-        <button className="flex items-center justify-center px-4 py-3 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-          <Mail className="h-5 w-5 mr-2" />
-          Enviar Relatório
-        </button>
-        <button className="flex items-center justify-center px-4 py-3 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-          <Printer className="h-5 w-5 mr-2" />
-          Imprimir Relatório
-        </button>
-        <button className="flex items-center justify-center px-4 py-3 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-          <Download className="h-5 w-5 mr-2" />
-          Exportar Dados
-        </button>
-      </div>
     </div>
   );
 }

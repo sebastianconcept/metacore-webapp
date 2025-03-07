@@ -177,6 +177,26 @@ export default function Purchases() {
 
     return (
         <div className="space-y-6">
+            {/* Quick Actions */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <button className="flex items-center justify-center px-4 py-3 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                    <FileText className="h-5 w-5 mr-2" />
+                    Relatório Detalhado
+                </button>
+                <button className="flex items-center justify-center px-4 py-3 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                    <Truck className="h-5 w-5 mr-2" />
+                    Agendar Recebimento
+                </button>
+                <button className="flex items-center justify-center px-4 py-3 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                    <Package className="h-5 w-5 mr-2" />
+                    Conferir Entrega
+                </button>
+                <button className="flex items-center justify-center px-4 py-3 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                    <Download className="h-5 w-5 mr-2" />
+                    Exportar Dados
+                </button>
+            </div>
+
             {/* Header */}
             <div className="flex items-center justify-between">
                 <h1 className="text-2xl font-semibold text-gray-900">Compras</h1>
@@ -278,25 +298,38 @@ export default function Purchases() {
             </div>
 
             {/* Tabs */}
+
+            {/* <button
+              onClick={() => setActiveTab('activity')}
+              className={`w-1/2 py-4 px-1 text-center border-b-2 font-medium text-sm ${activeTab === 'activity'
+                  ? 'border-indigo-500 text-indigo-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
+            >
+              <LayoutGrid className="inline-block h-5 w-5 mr-2" />
+              Atividade
+            </button> */}
+
             <Tabs defaultValue="activity" className="bg-white shadow rounded-lg">
-                <div className="border-b border-gray-200 px-6 pt-4">
-                    <TabsList className="w-full bg-transparent p-0 h-auto">
-                        <TabsTrigger
-                            value="activity"
-                            className="flex-1 data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-indigo-500 data-[state=active]:text-indigo-600 rounded-none pb-4"
-                        >
-                            <LayoutGrid className="h-5 w-5 mr-2" />
-                            <span>Atividade</span>
-                        </TabsTrigger>
-                        <TabsTrigger
-                            value="analytics"
-                            className="flex-1 data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-indigo-500 data-[state=active]:text-indigo-600 rounded-none pb-4"
-                        >
-                            <LineChart className="h-5 w-5 mr-2" />
-                            <span>Análise</span>
-                        </TabsTrigger>
-                    </TabsList>
-                </div>
+
+                <TabsList className="w-full bg-transparent p-0 h-auto">
+                    <TabsTrigger
+                        value="activity"
+                        className="w-1/2 py-4 px-1 text-center border-b-2 font-medium text-sm data-[state=active]:border-indigo-500 data-[state=active]:text-indigo-600 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                    >
+                        <LayoutGrid className="inline-block h-5 w-5 mr-2" />
+                        <span>Atividade</span>
+                    </TabsTrigger>
+                    <TabsTrigger
+                        value="analytics"
+                        className="w-1/2 py-4 px-1 text-center border-b-2 font-medium text-sm data-[state=active]:border-indigo-500 data-[state=active]:text-indigo-600 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                    >
+                        <LineChart className="inline-block h-5 w-5 mr-2" />
+                        <span>Análise</span>
+                    </TabsTrigger>
+                </TabsList>
+
+                {/* </div> */}
                 <div className="p-6">
                     <TabsContent value="analytics">
                         <div>
@@ -556,26 +589,6 @@ export default function Purchases() {
                     </TabsContent>
                 </div>
             </Tabs>
-
-            {/* Quick Actions */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                <button className="flex items-center justify-center px-4 py-3 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                    <FileText className="h-5 w-5 mr-2" />
-                    Relatório Detalhado
-                </button>
-                <button className="flex items-center justify-center px-4 py-3 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                    <Truck className="h-5 w-5 mr-2" />
-                    Agendar Recebimento
-                </button>
-                <button className="flex items-center justify-center px-4 py-3 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                    <Package className="h-5 w-5 mr-2" />
-                    Conferir Entrega
-                </button>
-                <button className="flex items-center justify-center px-4 py-3 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                    <Download className="h-5 w-5 mr-2" />
-                    Exportar Dados
-                </button>
-            </div>
         </div>
     );
 }
