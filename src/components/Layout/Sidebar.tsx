@@ -63,7 +63,7 @@ export default function Sidebar({ className = '' }: SidebarProps) {
               {t(`${item.name}`)}
             </NavLink>
           ))}
-          <div className="pt-6 ml-3 text-xs text-gray-400">v0.1.4</div>
+          <div className="pt-6 ml-3 text-xs text-gray-400">v0.1.5</div>
         </nav>
       </div>
     </div>
